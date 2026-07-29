@@ -11,16 +11,11 @@
 | `jina-reader` | 将任意 URL 转为干净的 Markdown 内容 |
 | `skill-creator` | 创建、修改、优化 skills，以及运行评估 |
 
-## Ponytail 系列（从外部仓库加载）
+## Ponytail 系列
 
 | 名称 | 用途 |
 |------|------|
-| `ponytail` | 懒人编码模式：用最少的代码完成工作，避免过度工程 |
-| `ponytail-audit` | 全仓库过度工程审计，列出可删除/简化/替换的内容 |
-| `ponytail-debt` | 追踪 `ponytail:` 注释标记的技术债 |
-| `ponytail-gain` | 展示 ponytail 的量化收益：更少代码、更低成本、更快速度 |
-| `ponytail-help` | 所有 ponytail 模式/命令的速查卡 |
-| `ponytail-review` | 代码审查——只找过度工程，指出可删什么、用什么替代 |
+| `ponytail` | 懒人编码模式：用最少的代码完成工作，避免过度工程。包含审计、审查、技术债追踪等子命令 |
 
 ---
 

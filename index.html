@@ -30,16 +30,10 @@
             查看源码
         </a>
     </div>
-    <p>这是从 <code>data.json</code> 加载的示例表格（支持排序、搜索、分页）。</p>
-    <hr>
-
     <table id="tbl" class="display" style="width:100%">
         <thead><tr><th>日期</th><th>商品</th><th>数量</th><th>单价</th><th>金额</th></tr></thead>
         <tbody></tbody>
     </table>
-
-    <hr>
-    <p><small>纯静态，GitHub Pages 托管。</small></p>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -57,7 +51,7 @@
                         { data: '金额', render: v => '¥' + v.toFixed(2) },
                     ],
                     order: [[0, 'desc']],
-                    pageLength: 10,
+                    pageLength: 20,
                     language: { url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANS.json' },
                 });
             });

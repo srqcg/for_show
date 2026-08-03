@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>我的小站</title>
+    <title>红利低波策略选股</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <style>
         body { font-family: sans-serif; max-width: 960px; margin: 40px auto; padding: 0 24px; line-height: 1.6; }
@@ -23,32 +23,35 @@
             <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.4,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="white" class="octo-body"/>
         </svg>
     </a>
-    <h1>你好 👏</h1>
+    <h1>红利低波策略选股 🧧</h1>
     <table id="tbl" class="display" style="width:100%">
-        <thead><tr><th>日期</th><th>商品</th><th>数量</th><th>单价</th><th>金额</th></tr></thead>
+        <thead><tr><th>股票代码</th><th>股票名称</th><th>最新价(元)</th><th>市盈率(PE)</th><th>ROE(%)</th><th>3年平均ROE(%)</th><th>股息率(%)</th><th>总市值(亿元)</th><th>120日均价(元)</th><th>买入点(元)</th><th>卖出点(元)</th></tr></thead>
         <tbody></tbody>
     </table>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="data/data.js"></script>
     <script>
-        fetch('data/data.json?t=' + Date.now())
-            .then(r => r.json())
-            .then(data => {
-                const tbl = $('#tbl').DataTable({
-                    data,
-                    columns: [
-                        { data: '日期' },
-                        { data: '商品' },
-                        { data: '数量' },
-                        { data: '单价', render: v => '¥' + v.toFixed(2) },
-                        { data: '金额', render: v => '¥' + v.toFixed(2) },
+        const tbl = $('#tbl').DataTable({
+            data: window.STOCK_DATA,
+            columns: [
+                        { data: '股票代码' },
+                        { data: '股票名称' },
+                        { data: '最新价(元)', render: v => '¥' + v.toFixed(2) },
+                        { data: '市盈率(PE)', render: v => v.toFixed(2) },
+                        { data: 'ROE(%)', render: v => v.toFixed(2) + '%' },
+                        { data: '3年平均ROE(%)', render: v => v.toFixed(2) + '%' },
+                        { data: '股息率(%)', render: v => (v * 100).toFixed(2) + '%' },
+                        { data: '总市值(亿元)', render: v => v.toFixed(1) + '亿' },
+                        { data: '120日均价(元)', render: v => '¥' + v.toFixed(2) },
+                        { data: '买入点(元)', render: v => '¥' + v.toFixed(2) },
+                        { data: '卖出点(元)', render: v => '¥' + v.toFixed(2) },
                     ],
-                    order: [[0, 'desc']],
-                    pageLength: 20,
+                    order: [[6, 'desc']],
+                    pageLength: 26,
                     language: { url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANS.json' },
                 });
-            });
     </script>
 </body>
 </html>
